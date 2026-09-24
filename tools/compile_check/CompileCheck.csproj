@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Compiles every Unity-facing script against real Unity engine reference assemblies (NuGet UnityEngine.Modules)
+    plus small stubs for the uGUI / Input System / Editor packages. Variants:
+      dotnet build -p:Variant=Player   (runtime, new Input System)
+      dotnet build -p:Variant=Legacy   (runtime, legacy Input Manager)
+      dotnet build -p:Variant=Editor   (editor scripts included, UNITY_EDITOR defined)
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <Variant Condition="'$(Variant)' == ''">Player</Variant>
+    <OutputType>Library</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>CS0649;CS0414</NoWarn>
+    <UnityRef>/opt/unityref/modules/lib/netstandard2.0</UnityRef>
+    <OutputPath>bin/$(Variant)/</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Variant)' == 'Player'"><DefineConstants>ENABLE_INPUT_SYSTEM</DefineConstants></PropertyGroup>
+  <PropertyGroup Condition="'$(Variant)' == 'Legacy'"><DefineConstants>ENABLE_LEGACY_INPUT_MANAGER</DefineConstants></PropertyGroup>
+  <PropertyGroup Condition="'$(Variant)' == 'Editor'"><DefineConstants>UNITY_EDITOR;ENABLE_INPUT_SYSTEM</DefineConstants></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/Core/**/*.cs" />
+    <Compile Include="../../Assets/Scripts/Game/**/*.cs" />
+    <Compile Include="Stubs/UguiStubs.cs" />
+    <Compile Include="Stubs/InputSystemStubs.cs" />
+    <Compile Include="Stubs/EditorStubs.cs" />
+    <Compile Include="../../Assets/Scripts/Editor/**/*.cs" Condition="'$(Variant)' == 'Editor'" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="$(UnityRef)/UnityEngine.CoreModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.AudioModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.TextRenderingModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.UIModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.InputLegacyModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.IMGUIModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.SharedInternalsModule.dll" />
+    <Reference Include="$(UnityRef)/UnityEngine.JSONSerializeModule.dll" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>

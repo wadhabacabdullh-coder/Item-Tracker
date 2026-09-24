@@ -19,6 +19,9 @@ namespace ShadowContract.Core
         public string KeyId => Type == DoorType.LockedBlue ? "blue" : Type == DoorType.LockedRed ? "red" : null;
     }
 
+    /// <summary>Built-in blocking rules for <see cref="World.Raycast(Vec2, Vec2, float, RayMode, bool, Vec2)"/> (no delegate allocations).</summary>
+    public enum RayMode { Sight, Bullets, Light, NpcWalk, Projectile }
+
     public struct RayHit
     {
         public bool Hit;
@@ -295,13 +298,63 @@ namespace ShadowContract.Core
             return hit;
         }
 
+        private bool Blocks(int x, int y, RayMode mode, bool crouched, Vec2 target)
+        {
+            switch (mode)
+            {
+                case RayMode.Sight: return BlocksSight(x, y, crouched, target);
+                case RayMode.Bullets: return BlocksBullets(x, y);
+                case RayMode.NpcWalk: return !IsWalkableForNpc(x, y);
+                case RayMode.Projectile: return BlocksBullets(x, y) || TileAt(x, y).Kind == TileKind.Window;
+                default: // Light
+                {
+                    var t = TileAt(x, y);
+                    if (t.Kind == TileKind.Wall || t.Kind == TileKind.Void) return true;
+                    if (t.Kind == TileKind.Door) { var d = DoorAt(x, y); return d != null && !d.Open; }
+                    return t.Kind == TileKind.Furniture && t.Is(TileFlags.BlocksSight) && t.Furniture != FurnitureType.Tree;
+                }
+            }
+        }
+
+        /// <summary>Grid DDA raycast using a built-in blocking rule. Allocation free (hot path for AI, lighting and cones).</summary>
+        public RayHit Raycast(Vec2 origin, Vec2 dir, float maxDist, RayMode mode, bool crouched = false, Vec2 target = default)
+        {
+            var hit = new RayHit { Hit = false, Distance = maxDist, Point = origin + dir * maxDist };
+            if (dir.SqrLength < 1e-10f) return hit;
+            dir = dir.Normalized;
+            int x = (int)Math.Floor(origin.x), y = (int)Math.Floor(origin.y);
+            int stepX = dir.x > 0 ? 1 : -1, stepY = dir.y > 0 ? 1 : -1;
+            float tDeltaX = Math.Abs(dir.x) < 1e-9f ? float.MaxValue : Math.Abs(1f / dir.x);
+            float tDeltaY = Math.Abs(dir.y) < 1e-9f ? float.MaxValue : Math.Abs(1f / dir.y);
+            float tMaxX = Math.Abs(dir.x) < 1e-9f ? float.MaxValue : (dir.x > 0 ? (x + 1 - origin.x) : (origin.x - x)) * tDeltaX;
+            float tMaxY = Math.Abs(dir.y) < 1e-9f ? float.MaxValue : (dir.y > 0 ? (y + 1 - origin.y) : (origin.y - y)) * tDeltaY;
+            float t = 0f;
+            Vec2 normal = Vec2.Zero;
+            int guard = 0;
+            while (t <= maxDist && guard++ < 4096)
+            {
+                if (t > 0f && Blocks(x, y, mode, crouched, target))
+                {
+                    hit.Hit = true;
+                    hit.Distance = t;
+                    hit.Point = origin + dir * t;
+                    hit.Cell = new Int2(x, y);
+                    hit.Normal = normal;
+                    return hit;
+                }
+                if (tMaxX < tMaxY) { t = tMaxX; tMaxX += tDeltaX; x += stepX; normal = new Vec2(-stepX, 0); }
+                else { t = tMaxY; tMaxY += tDeltaY; y += stepY; normal = new Vec2(0, -stepY); }
+            }
+            return hit;
+        }
+
         /// <summary>Line of sight between two points for vision.</summary>
         public bool HasLineOfSight(Vec2 from, Vec2 to, bool targetCrouched = false)
         {
             Vec2 d = to - from;
             float dist = d.Length;
             if (dist < 1e-4f) return true;
-            var hit = Raycast(from, d / dist, dist, (x, y) => BlocksSight(x, y, targetCrouched, to));
+            var hit = Raycast(from, d / dist, dist, RayMode.Sight, targetCrouched, to);
             if (!hit.Hit) return true;
             // The target's own cell never blocks (e.g. player standing in an open doorway).
             return hit.Cell == Int2.FromWorld(to);
@@ -315,12 +368,9 @@ namespace ShadowContract.Core
             if (dist < 1e-4f) return true;
             Vec2 n = d / dist;
             Vec2 side = n.Perp * radius;
-            foreach (var off in new[] { Vec2.Zero, side, -side })
-            {
-                var hit = Raycast(from + off, n, dist, (x, y) => !IsWalkableForNpc(x, y));
-                if (hit.Hit) return false;
-            }
-            return true;
+            return !Raycast(from, n, dist, RayMode.NpcWalk).Hit
+                && !Raycast(from + side, n, dist, RayMode.NpcWalk).Hit
+                && !Raycast(from - side, n, dist, RayMode.NpcWalk).Hit;
         }
 
         /// <summary>Nearest floor cell to a position (used when an entity is spawned inside geometry).</summary>

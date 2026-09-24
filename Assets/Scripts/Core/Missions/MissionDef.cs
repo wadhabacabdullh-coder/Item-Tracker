@@ -88,6 +88,7 @@ namespace ShadowContract.Core
                 Objectives =
                 {
                     new ObjectiveDef { Id = "card", Type = ObjectiveType.Retrieve, Text = "Find a blue access card", ItemId = "keycard_blue", Optional = true, Bonus = 500 },
+                    new ObjectiveDef { Id = "floor", Type = ObjectiveType.Reach, Text = "Get onto the executive floor", ZoneName = "Open Office" },
                     new ObjectiveDef { Id = "kill", Type = ObjectiveType.Eliminate, Text = "Eliminate Marcus Kessler", TargetIds = { "kessler" } },
                     new ObjectiveDef { Id = "extract", Type = ObjectiveType.Extract, Text = "Escape via the street or the helipad" },
                 },

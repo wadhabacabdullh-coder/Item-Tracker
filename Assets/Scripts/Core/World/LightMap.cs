@@ -92,13 +92,7 @@ namespace ShadowContract.Core
             {
                 // Light reaching a wall face should still light the wall itself: test up to just before the sample.
                 Vec2 dir = (p - l.Pos) / d;
-                var hit = world.Raycast(l.Pos, dir, d - 0.05f, (x, y) =>
-                {
-                    var t = world.TileAt(x, y);
-                    if (t.Kind == TileKind.Wall || t.Kind == TileKind.Void) return true;
-                    if (t.Kind == TileKind.Door) { var door = world.DoorAt(x, y); return door != null && !door.Open; }
-                    return t.Kind == TileKind.Furniture && t.Is(TileFlags.BlocksSight) && t.Furniture != FurnitureType.Tree;
-                });
+                var hit = world.Raycast(l.Pos, dir, d - 0.05f, RayMode.Light);
                 if (hit.Hit)
                 {
                     // Let light spill one cell into the blocking surface so walls are lit on their face.

@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <Variant Condition="'$(Variant)' == ''">Player</Variant>
+    <BaseIntermediateOutputPath>obj/$(Variant)/</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>

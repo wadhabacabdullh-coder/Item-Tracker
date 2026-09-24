@@ -245,6 +245,8 @@ namespace ShadowContract.Tests
                             Assert.IsTrue(ents.Any(e => e.Kind == "target" && e.Str("id") == t), $"{m.Id}: target {t}");
                     if (o.Type == ObjectiveType.Retrieve && !o.ItemId.StartsWith("keycard_"))
                         Assert.IsTrue(ents.Any(e => e.Kind == "pickup" && e.Str("id") == o.ItemId), $"{m.Id}: item {o.ItemId}");
+                    if (o.Type == ObjectiveType.Reach)
+                        Assert.IsTrue(ents.Any(e => e.Kind == "zone" && e.Str("name") == o.ZoneName), $"{m.Id}: zone {o.ZoneName}");
                     if (o.Type == ObjectiveType.Download)
                         Assert.IsTrue(ents.Any(e => e.Kind == "terminal" && e.Str("id") == o.ItemId), $"{m.Id}: terminal {o.ItemId}");
                 }

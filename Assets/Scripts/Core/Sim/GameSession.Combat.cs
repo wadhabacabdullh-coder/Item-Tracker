@@ -169,7 +169,7 @@ namespace ShadowContract.Core
                 if (pr.Done) { Projectiles.RemoveAt(i); continue; }
                 Vec2 step = pr.Vel * dt;
                 float len = step.Length;
-                var hit = World.Raycast(pr.Pos, step / Math.Max(len, 1e-6f), len, (x, y) => World.BlocksBullets(x, y) || World.TileAt(x, y).Kind == TileKind.Window);
+                var hit = World.Raycast(pr.Pos, step / Math.Max(len, 1e-6f), len, RayMode.Projectile);
                 Vec2 next = hit.Hit ? hit.Point - step / Math.Max(len, 1e-6f) * 0.05f : pr.Pos + step;
 
                 if (pr.Kind == ProjectileKind.Knife)
@@ -241,7 +241,7 @@ namespace ShadowContract.Core
             RayHit wall = default;
             for (int guard = 0; guard < 6; guard++)
             {
-                wall = World.Raycast(start, dir, remaining, (x, y) => World.BlocksBullets(x, y));
+                wall = World.Raycast(start, dir, remaining, RayMode.Bullets);
                 if (!wall.Hit) { end = start + dir * remaining; break; }
                 var t = World.TileAt(wall.Cell.x, wall.Cell.y);
                 if (t.Kind == TileKind.Window && !World.IsWindowBroken(wall.Cell.x, wall.Cell.y))

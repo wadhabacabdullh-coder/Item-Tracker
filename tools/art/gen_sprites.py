@@ -421,6 +421,15 @@ def gen_ui():
     c.px(8, 8, P['red3'])
     c.outline_alpha((0, 0, 0, 200))
     save(c, 'UI', 'crosshair.png')
+    # damage / low-health vignette: transparent centre, opaque edges
+    c = Canvas(64, 36)
+    for y in range(36):
+        for x in range(64):
+            dx, dy = (x + 0.5 - 32) / 32, (y + 0.5 - 18) / 18
+            d = min(1.0, math.hypot(dx, dy) / 1.25)
+            a = max(0.0, (d - 0.55) / 0.45) ** 1.6
+            c.a[y, x] = (255, 255, 255, int(255 * a))
+    save(c, 'UI', 'vignette.png')
     # NPC state icons
     c = Canvas(5, 11); c.rect(1, 0, 3, 7, P['red3']); c.rect(1, 8, 3, 3, P['red3']); c.outline_alpha(OUTLINE); save(c, 'UI', 'alert.png')
     c = Canvas(7, 11); c.rect(1, 0, 5, 2, P['gold3']); c.rect(5, 1, 2, 4, P['gold3']); c.rect(3, 4, 3, 2, P['gold3']); c.rect(3, 6, 2, 2, P['gold3']); c.rect(3, 9, 2, 2, P['gold3'])

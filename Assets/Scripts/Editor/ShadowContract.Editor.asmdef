@@ -1,0 +1,19 @@
+{
+    "name": "ShadowContract.Editor",
+    "rootNamespace": "ShadowContract.EditorTools",
+    "references": [
+        "ShadowContract.Core",
+        "ShadowContract.Game"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,9 +1,10 @@
+// Explicit (opt-in) stress and diagnostic tests: run with  dotnet test --filter "FullyQualifiedName~StressTests|DetectionTrace|LightDump"
 using System.Linq;
 using NUnit.Framework;
 using ShadowContract.Core;
 namespace ShadowContract.Tests
 {
-    public class DebugTests
+    public class StressTests
     {
         [Test, Explicit]
         public void DebugChaos([Range(1, 25)] int seed, [Values("mansion_host", "facility_voss", "office_cfo", "mansion_ledger", "facility_prototype", "office_breach")] string mid)
@@ -48,7 +49,7 @@ namespace ShadowContract.Tests
 }
 namespace ShadowContract.Tests
 {
-    public class DebugSpot
+    public class DetectionTrace
     {
         [Test, Explicit]
         public void Trace()
@@ -62,6 +63,35 @@ namespace ShadowContract.Tests
             {
                 s.Update(GameSession.Tick, inp);
                 if (i % 12 == 0) TestContext.WriteLine($"{i * GameSession.Tick:0.0}s {g.State} susp {g.Suspicion:0.00} sees {g.SeesPlayer} facing {g.Facing:0.0} pos {g.Pos} light {s.World.LightAt(s.Player.Pos)}");
+            }
+        }
+    }
+}
+namespace ShadowContract.Tests
+{
+    public class LightDump
+    {
+        /// <summary>Writes each map's baked light (2 samples/tile, same as the game) to a PPM for visual review.</summary>
+        [Test, Explicit]
+        public void DumpLightmaps()
+        {
+            foreach (var m in new[] { "mansion_host", "facility_voss", "office_cfo" })
+            {
+                var mission = MissionCatalog.Get(m);
+                var s = new GameSession(TestMaps.Load(mission.MapId), mission, Difficulty.Normal, new LoadoutConfig());
+                int w = s.World.Width * 2, h = s.World.Height * 2;
+                var rgb = new float[w * h * 3];
+                LightMap.Bake(s.World, s.Lights, 2, rgb);
+                var path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), mission.MapId + "_light.ppm");
+                using (var f = new System.IO.BinaryWriter(System.IO.File.Create(path)))
+                {
+                    f.Write(System.Text.Encoding.ASCII.GetBytes($"P6\n{w} {h}\n255\n"));
+                    for (int y = h - 1; y >= 0; y--)
+                    for (int x = 0; x < w; x++)
+                    for (int c = 0; c < 3; c++)
+                        f.Write((byte)System.Math.Min(255, (int)(rgb[(y * w + x) * 3 + c] * 127.5f)));
+                }
+                TestContext.WriteLine(path);
             }
         }
     }
