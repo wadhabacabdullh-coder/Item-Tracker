@@ -1,0 +1,16 @@
+{
+  "name": "shadow-contract-web",
+  "version": "1.0.0",
+  "description": "Browser port of Shadow Contract",
+  "scripts": {
+    "pack": "python3 tools/pack_assets.py",
+    "build": "node tools/build.mjs",
+    "test": "esbuild test/core.test.ts --bundle --platform=node --format=esm --outfile=.test/core.test.mjs && node --test .test/core.test.mjs",
+    "typecheck": "tsc --noEmit --strict --target es2020 --lib es2020,dom,dom.iterable --moduleResolution bundler --module esnext src/game/main.ts"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3"
+  },
+  "private": true
+}

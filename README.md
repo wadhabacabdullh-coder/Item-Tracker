@@ -102,6 +102,21 @@ python3 tools/audio/gen_audio.py
 
 Debug helpers in the editor: **Shadow Contract → Unlock Everything (debug)** and **Delete Save Data**.
 
+## Browser version (`web/`)
+
+`web/` is a TypeScript port of the same game that runs in a browser without Unity. `web/src/core` is a direct port of `Assets/Scripts/Core`, with the same names and numbers. `web/src/game` draws it with Canvas2D and plays sound through WebAudio, reusing the generated art, maps and audio. Progress and settings are saved in the browser's local storage.
+
+```bash
+cd web
+npm install
+npm test            # ported core tests: map reachability, stealth, weapons, shop, bots finishing all 6 contracts
+npm run pack        # packs Assets/Resources into dist/ (sprites.json, maps.json, audio.json, sfx.wav, music.wav)
+npm run build       # bundles the game and inlines it into dist/index.html
+python3 -m http.server -d dist 8000   # then open http://localhost:8000
+```
+
+In the browser, crouch defaults to **C**, because Ctrl+W closes the tab.
+
 ## Credits
 
 - Game design, code, art and audio: generated for this project.
