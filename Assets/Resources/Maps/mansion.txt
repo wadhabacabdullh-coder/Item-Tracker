@@ -1,0 +1,158 @@
+@meta
+id: mansion
+name: Villa Moretti
+theme: mansion
+ambient: 0.26
+description: A hillside villa hosting a private party. Gardens, a ballroom and a cellar full of secrets.
+
+@tiles
+##############################################################
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,,,B,,#  ########################
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#  #==____#:::::::::::::xx#
+#,,,,,,,######W###W##########W#####W######W###########,,,,,,,#  #______#::h::h::h::h:::#
+#,,,,,,,#==_h:::::::p#;p;#fbbbf;#yy_on#:bb:f:::#on_yy#,,,,,,,#  #______#::h::h::h::h:::#
+#,,,,T,,#___h::::::::#;;;#;bbb;;#_____#:bb:::::#_____#,,,,,,,#  #______D::h::h::h::h:::#
+#,,,,,,,#___h::kkk:::#;;;#;;;;;;#_____#::::::::#_____#,,,,,,,#  #______#::h::h::h::h:::#
+#,B,,,,,#___S:::c::::D;;;#;;;;;;#_____#::::::::#_____#,,,,,,,#  #______#::h::h::h::h:::#
+#,B,,,,,#___h::::::::#;;;D;;;;;;##D####::::::::###D###,,,,,,,#  #______#::h::h::h::h:::#
+#,B,,,,,#___h::::::::#;;;#;C;;s;;;;;;;#::::::::::::::#,,,,,,,#  #______#::h::h::h::h:::#
+#,B,,,,,#__xh:::::ss:#;;;#;;;;;;;;;;;C#:C:::kc:::::::W,p,,,p,#  #______#:::::::::::::::#
+#,B,,T,,#___hp:::::::#;;;#;;;;;;;;;;;;#::::::::::::::#,""""",#  ####D###::::::::::::::e#
+#,B,,,,,##############...#####D##############D########,""""",#  #......####D############
+#,B,,,,,#==__#_uuuuuu#p..............p#::::::::::::::#,"~~~",#  #xx.x..#;;;;;;#f......f#
+#,B,,,,,#____D_______#..i..........i..#::PPP:::::uuuu#,"~~~",#  #x.....#;;;;;;#.xx..xx.#
+#,B,,,,,#_x__#_______#......ssss......#::PPP::::::::jW,"~~~",#  #......#;ccc;;M........#
+#,B,,,,,######_uuu__fD................D::::::::::::::#,"~~~",#  #.xx...#;ttt;;#........#
+#,B,,T,,#______uuu__f#................#::::::::::::::#,"~~~",#  #......D;ttt;;#........#
+#,B,,,,,D____________#......tttt......#::::::::::::::#,"~~~",#  #......#;ccc;;#...w....#
+#,B,,,,,#____________#..i..........i..#::::::::::::::D,"~~~",#  #......#;;;;;;#...w....#
+#,B,,,,,#e___________#p...............#::i::::::::i::#,"~~~",#  #......#;;;;;;#........#
+#,B,,,,,#######D#############..########::::::::::::::#,"~~~",#  #......#;;;;;;#...w.==.#
+#,B,,,,,#f::::::::::p#qqqq.f#p;;;;;;;p#:::::tt:::::::#,"~~~",#  #C....f#;;;;;;#...w....#
+#,B,,T,,#::::::::::::#.cc...#;;;;;;;;;#:::::tt:::::::W,"~~~",#  ########################
+#,B,,,,,#::::::::::::#......#;;;;;;;;;#::::::::::::::#,"~~~",#
+#,B,,,,,W::ccccccc:::#......D;;;;;;;;;#::::::::tt::::#,"~~~",#
+#,B,,,,,#::ttttttt:::#......#;;ttt;;;;#::::::::tt::::D,"~~~",#
+#,B,,,,,#::ttttttt:::#C.....#;;;;;;;;;D::i::::::::i::#,""""",#
+#,B,,,,,#::ccccccc:::########;;;;;;;;;#::::::::::::::#,""""",#
+#,B,,T,,W::::::::::::#o_o___#;;;;;;;;;#:::::tt:::::::#,p,,,p,#
+#,,,,,,,#::::::::::::D______D;;;;;;;;;#::::::::::::::W,c c,,,#
+#,,,,,,,#::::::::::::#______#;;;;;;;;;#::::::::::::::#,,,,,,,#
+#,,,,,,,#p::::::::::p#nn____#;;;;;;;;;#::::::::::::::#,,,,,,,#
+#,,,,,,,######W###W###########DD##W##########W###W####,,,,,,,#
+#,,,,,,,,"""""""""""""""""""""""""""""""""""""""""""",,,,,,,,#
+#,,,,,,,,"""""""""""""""""""""""""""""""""""""""""""",,,,,,,,#
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,""""",,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#,,,,,,,,,,,,,,,,,ggg,,,,,,,""""",,,,,,,ggg,,,,,,,,,,,,,,,,,,#
+#,,,,,,,,,,,,,,,,,ggg,,,,,,,""""",,,,,,,ggg,,,,,,,,,,,,,,,,,,#
+#,,BBBBBBBBBBBBBBBBBBBB,,,,,""""",,,,,BBBBBBBBBBBBBBBBBBBBB,,#
+#,,B,,,,,,,,,,,,,,,,,,,,""""""""""""",,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,,,,,,,,,,,,,,,,,,,""""""""""""",,,,,,,,,,,,,,,,,,,T,,,,#
+#,,B,,,,,,,,,,,,,T,,,,,,"""~~~~~~~""",,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,T,,,,,,,,,,,,,,,,,"""~~~i~~~""",,,,,,,,T,,,,,,,,,,,,,,,#
+#,,B,,,,,,,,,,,,,,,,,,,,"""~~~i~~~""",,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,,,,,,,T,,,,,,,,,,,"""~~~~~~~""",,,,,,,,,,,,,,T,,,,,,,,,#
+#,,B,,,,,,,,,,,,,,,,,,,,""""""""""""",,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,,,,,,,,,,,,,,,,,,,""""""""""""",,,,,,,,,,,,,,,,,,,,,,,,#
+#,,B,,,,,,,,,,,,,,,,,,,,,,,,""""",,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#,,BBBBBBBBBBBBBBBBBBBB,,,,,""""",,,,,BBBBBBBBBBBBBBBBBBBBB,,#
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,""""",,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#BBBBBB,,,,,,,,T,,,,,,,,,,,,""""",,,####W###,,,,,,,,########,#
+#,,,,,,B,,,,,,,,,,,,,,,,,,,,""""",,,#.kk..f#,,,,,,,,#....xx#,#
+#,,,,,,BT,,,,,,,,,,,,,,,,,,,""""",,,#..c...#,,,,,,,,#.....x#,#
+#,,,,,,B,,,,,,,,,,,,T,,,,,,,""""",,,D......#,,,,,,,,D......#,#
+#,,,,,,B,,,,,,,,,,,,,,,,,,,,""""",,,#......#,,T,,,,,#......#,#
+#,,,,,,B,,,,,,,,,,,,,,,,,,,,""""",,,#.....C#,,,,,,,,#f.....#,#
+#,,,,,,B,,,,,,,,,,,,,,,,,,,,""""",,,########,,,,,,,,########,#
+###########################"""""""############################
+
+@entities
+spawn at=3,56
+extract rect=1,53,6,6 label="Getaway car"
+stairs a=65,3 b=10,15
+stairs a=9,5 b=84,22 secret=1
+zone name="Garden" rect=1,35,60,24
+zone name="Garden" rect=1,1,60,3
+zone name="Garden" rect=1,4,6,30
+zone name="Pool Terrace" rect=54,4,7,31
+zone name="Garden Shed" rect=53,53,6,5
+zone name="Gatehouse" rect=37,53,6,5
+zone name="Study" rect=13,5,8,8
+zone name="Hidden Room" rect=9,5,3,8
+zone name="North Corridor" rect=22,5,3,8
+zone name="Master Bedroom" rect=26,5,12,8
+zone name="Guest Suite" rect=39,5,14,8
+zone name="Kitchen" rect=9,14,12,8
+zone name="Pantry" rect=9,14,4,3
+zone name="Gallery" rect=22,14,16,8
+zone name="Dining Room" rect=9,23,12,11
+zone name="Security Room" rect=22,23,6,6
+zone name="Washroom" rect=22,30,6,4
+zone name="Foyer" rect=29,23,9,11
+zone name="Ballroom" rect=39,14,14,20
+zone name="Cellar Stairs" rect=65,3,6,9
+zone name="Wine Cellar" rect=72,3,15,10
+zone name="Storage" rect=65,13,6,11
+zone name="Tasting Room" rect=72,14,6,10
+zone name="Vault" rect=79,14,8,10
+light at=30,28 r=7 i=1.0 color=ffd9a0
+light at=45,18 r=7 i=1.0 color=ffd9a0
+light at=45,29 r=7 i=1.0 color=ffcf8a
+light at=29,17 r=7 i=0.9 color=ffe0b0
+light at=16,9 r=5 i=0.8 color=ffc070
+light at=31,9 r=5 i=0.6 color=ffb0a0
+light at=15,18 r=6 i=0.9 color=e8f0ff
+light at=15,28 r=6 i=0.9 color=ffd9a0
+light at=25,25 r=4 i=0.7 color=80c0ff
+light at=45,8 r=5 i=0.6 color=ffd0a0
+light at=24,31 r=3 i=0.6 color=e8f0ff
+light at=30,44 r=7 i=0.8 color=fff0d0 group=garden
+light at=13,45 r=5 i=0.6 color=fff0d0 group=garden
+light at=48,45 r=5 i=0.6 color=fff0d0 group=garden
+light at=30,56 r=5 i=0.8 color=fff0d0 group=garden
+light at=57,20 r=6 i=0.9 color=60e0ff group=garden
+light at=4,20 r=4 i=0.5 color=fff0d0 group=garden
+light at=39,55 r=4 i=0.8 color=ffe0a0
+light at=55,55 r=3 i=0.5 color=ffa050
+light at=67,7 r=4 i=0.7 color=ffb060
+light at=79,8 r=5 i=0.6 color=ffb060
+light at=75,18 r=4 i=0.8 color=ffc080
+light at=82,18 r=5 i=0.9 color=ffe0a0
+light at=67,18 r=4 i=0.5 color=ffb060 flicker=1
+powerbox at=53,57 group=garden
+distraction at=41,15 kind=piano
+distraction at=16,14 kind=radio
+guard id=gate at=31,57 facing=90 look="90,45,135"
+guard id=drive at=30,52 route="30,52:2:270|30,37:2:90|24,37:0|24,49:1"
+guard id=westg at=4,48 route="4,48:1|4,32:2:0|4,4:1|20,2:2:270|4,4:0|4,32:0"
+guard id=pool at=55,32 route="55,32:2:90|55,6:2:180|40,2:2:270|55,6:0|58,33:2:270|48,45:1|58,33:0"
+guard id=foyer at=33,32 facing=90 look="90,180,0"
+guard id=secchief at=24,25 facing=90 look="90,0" type=elite weapon=smg key=red
+guard id=gallery at=26,18 route="26,18:2|34,18:2|34,21:0|26,21:1"
+guard id=ballrm at=40,31 route="40,31:2:0|51,31:1|51,19:2:180|40,19:1"
+guard id=kitchen at=12,20 route="12,20:2|19,21:1|15,24:0|19,32:2:180|10,32:1|10,24:0"
+guard id=northc at=23,12 route="23,12:3:270|23,6:3:270"
+guard id=cellar at=69,5 route="69,5:2|69,10:0|75,11:2:0|85,11:2:90|76,11:0|69,10:0"
+guard id=gatehouse at=38,56 route="38,56:4|34,55:0|27,57:3:90|34,55:0"
+civilian id=chef at=17,19 type=staff route="17,19:6:90|11,19:4|19,15:5:90"
+civilian id=maid at=45,10 type=staff route="45,10:5|46,15:0|40,24:1|34,20:0|28,11:6|34,20:0|46,15:0"
+civilian id=guest1 at=46,21 type=guest route="46,21:8:0|48,24:6|44,27:7"
+civilian id=guest2 at=43,27 type=guest route="43,27:10:90|48,19:6|51,24:6"
+civilian id=guest3 at=33,19 type=guest route="33,19:9|36,24:5|26,16:7"
+pickup item=medkit at=24,32
+pickup item=ammo amount=24 at=40,56
+pickup item=cash amount=300 at=37,6
+pickup item=cash amount=1500 at=83,16
+pickup item=throwing_knives amount=2 at=66,20
+pickup item=armor amount=35 at=56,56
+
+@mission mansion_host
+target id=moretti name="Victor Moretti" at=46,25 escape=30,58 route="46,25:10:180:Greeting_guests|47,20:8:0:Drinks_at_the_bar|30,18:4::Admiring_art|17,9:14:90:Phone_call|28,11:9::Resting|34,7:6::Freshening_up|30,18:3|44,27:10::Mingling"
+guard id=bodyguard at=46,23 type=elite weapon=smg follow=moretti
+
+@mission mansion_ledger
+target id=accountant name="Paolo Greco" at=74,15 escape=10,15 weapon=pistol route="74,15:12:0:Counting_money|68,20:6::Checking_stock|76,11:8::Tasting_wine|74,15:6"
+pickup item=intel id=ledger name="Moretti Ledger" at=81,20
+guard id=cellar2 at=73,22 type=elite weapon=rifle route="73,22:3:0|76,21:3|67,21:2|73,14:2"
+guard id=hall2 at=36,14 route="36,14:3|26,14:1|23,8:3:270|26,14:0"

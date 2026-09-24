@@ -1,0 +1,155 @@
+@meta
+id: facility
+name: Helix Labs
+theme: facility
+ambient: 0.18
+description: A secret lab complex under an industrial park. Cameras, keycards and ventilation shafts.
+
+@tiles
+ 
+ 
+                                                        ########W##########
+                                                        #p;;;;;;;;;;hhhhhh#
+                              vvvvvvvvvvvvvvvvvvvvvvvvvvv;;;;;;;;;;;;;;;;;#
+                              v                         #;;;;;kkkk;;;;;;;;#
+                              v                         #;;;;;;cc;;;;;;;;;#
+                              v                         #;;;;;;;;;;;;;;;;;#
+                        ######v##########################;;;;;;;;;;;;;;;;;###############
+                        #__________________f#...........#;;;;;;;;;;;;;;;;C#_________jj__#
+                        #_mm__~~~__mm_______#.rrrr.rrrr.#;;;;;;;;;;;;;;;;;#_tt__tt______#
+                        #_mm__~~~__mm_______#...........#;t;;;;;;;;;;;;;;;#_cc__cc______#
+######W######           #___________________#...........#;ss;;;;;;;;;;;;;;D_____________#
+#.kk.f.....f#           #___________________#.rrrr.rrrr.#;ss;;;;;;;;;;;;;;#_____________#
+#..c........#           #___________________#...........#;;;;;;;;;;;;;;;;;#_____________#
+#...........#           #_tttt__tttt________#...........#;;;;;;;;;;;;;;;;;#_____________#
+#...........#           #___________________#.rrrr.rrrr.#;;;;;;;;;;;;;;;;p#_uu__________#
+#...........#           #___________________#...........########################D########
+#C..........#           #___________________#...........#................p#o_o_o_o_o____#
+######D########         #_tttt__tttt________#.rrrr.rrrr.#.....uuuu........#_____________#
+#"""""""""xx""#         #___________________#...........#.................#_____________#
+#"ggg"""""xx""#         #___________________D...........#.................######D########
+#"ggg"""""""""###########___________________#.qq........#sss..............#_____________#
+#"ggg"""""""""#.qq.q...f#_uuu______________f#..........f#.................#_____________#
+#"ggg"""""""""#..c......#___________________#...........#.................#nnnn_________####
+#"""""""""""""#.........##########D###############L##############D##################D####""#
+#""""""""""""e#.........#.............p...............p................p..............p.#""#
+#"""""""""""""D.........L...............................................................D""#
+#"""""""""""""#.........L...............................................................D""#
+#"ggg"""""""""#wwww.....#...................................j...........................#""#
+#"ggg"""""""""#.........#######D#############D#############D################M############""#
+#"ggg"""""""""#.........#............f#.............#_____________#_____________________####
+#"ggg""""""xxx#.j.......#.qqqqq......f#.bb.bb.bb....#___________e_#_qqq___________qq____#
+#"""""""""""""###########..ccc........#.bb.bb.bb....#_mmm__mmm__e_#_____________________#
+#"""""""""""""#         #.............#............C#_mmm__mmm____#_____________________#
+#######D#######         #.............#.............#___________e_#_____________________#
+#.............#         #.............#.bb.bb.bb....#_____________#WWWDWWWWWWWWWWWWWWWWW#
+#xx.xx.x......#         #.............#.bb.bb.bb....#_____________#_____________________#
+#xx.xx.x......vvvvvvvvvvv.............#.............#_____________M_____________________#
+#.............#         #C............#fffff...fffff#_mmm__mmm____#_____________________#
+#x.xx.xx......#         #######D#############D#######_mmm__mmm____#________mmmmm________#
+#x.xx.xx......#         #...........................#_____________#_____________________#
+#.............#         #.xxx.......................#_____________#_________t_t_________#
+#hhhh.........#         #.xxx....xxx..............e.#_____________#_____________________#
+#.............#         #........xxx....xxx.........D__e_______e__#_____________________#
+#............f#         #...............xxx.........#_____________#f___________________f#
+###############         #.xxx.................xxx...#####################################
+                        #.xxx.................xxx...#
+                        #........xxx................#
+                        #........xxx....xxx.........#
+                        #.xxx...........xxx.........#
+                        #.xxx.......................#
+                        #.............g.............#
+                        #.hhhhhhhhhhhhhhhhhhhhhhhhh.#
+                        #############################
+ 
+
+@entities
+spawn at=7,27
+extract rect=1,26,1,4 label="Loading dock"
+extract rect=89,25,2,6 label="Freight elevator"
+zone name="Loading Dock" rect=1,20,13,15
+zone name="Dock Office" rect=1,13,11,6
+zone name="Dock Storage" rect=1,36,13,10
+zone name="Checkpoint" rect=15,23,9,10
+zone name="Main Corridor" rect=25,26,63,4
+zone name="Freight Elevator" rect=89,25,2,6
+zone name="Biolab" rect=25,9,19,16
+zone name="Server Room" rect=45,9,11,16
+zone name="Director's Office" rect=57,3,17,14
+zone name="Reception" rect=57,18,17,7
+zone name="Break Room" rect=75,9,13,8
+zone name="Restrooms" rect=75,18,13,7
+zone name="Security Control" rect=25,31,13,9
+zone name="Barracks" rect=39,31,13,9
+zone name="Warehouse" rect=25,41,27,13
+zone name="Generator Room" rect=53,31,13,15
+zone name="Containment Lab" rect=67,31,21,15
+zone name="Ventilation" rect=14,4,43,35
+light at=7,24 r=6 i=0.8 color=ffd080
+light at=7,31 r=5 i=0.6 color=ffd080 flicker=1
+light at=6,15 r=4 i=0.7 color=e0f0ff
+light at=7,41 r=4 i=0.5 color=ffb060 flicker=1
+light at=19,26 r=5 i=1.0 color=e0f0ff
+light at=30,27 r=5 i=0.8 color=d0e8ff
+light at=46,27 r=5 i=0.8 color=d0e8ff
+light at=62,27 r=5 i=0.8 color=d0e8ff
+light at=78,27 r=5 i=0.8 color=d0e8ff
+light at=34,12 r=6 i=0.9 color=80ffb0
+light at=34,21 r=6 i=0.8 color=d0ffe0
+light at=50,16 r=7 i=0.7 color=6090ff
+light at=65,9 r=6 i=0.9 color=ffd9a0
+light at=65,21 r=5 i=0.8 color=ffe0c0
+light at=81,12 r=5 i=0.8 color=fff0d0
+light at=81,21 r=4 i=0.6 color=e0f0ff
+light at=31,35 r=5 i=0.9 color=80c0ff
+light at=45,36 r=6 i=0.5 color=ffc080
+light at=32,47 r=6 i=0.6 color=ffd080 flicker=1
+light at=45,48 r=5 i=0.5 color=ffd080
+light at=59,38 r=6 i=0.8 color=ff8040 flicker=1
+light at=77,33 r=6 i=0.9 color=d0e8ff
+light at=77,41 r=5 i=1.0 color=ff4060
+light at=89,28 r=3 i=0.8 color=ffe080
+camera at=15,33 facing=45 sweep=50 group=cams
+camera at=25,29 facing=0 sweep=60 group=cams
+camera at=87,29 facing=180 sweep=60 group=cams
+camera at=43,24 facing=225 sweep=50 group=cams
+camera at=65,45 facing=135 sweep=50 group=cams
+camera at=13,20 facing=315 sweep=40 group=cams
+terminal at=28,32 action=cameras group=cams label="Security terminal"
+powerbox at=55,31 group=generator label="Breaker panel"
+distraction at=84,10 kind=vending
+distraction at=6,13 kind=radio
+guard id=checkpt at=20,27 facing=180 look="180,270,90" key=blue
+guard id=dock at=9,23 route="9,23:2|9,33:2:270|12,28:2:0"
+guard id=corrw at=30,28 route="30,28:2:0|55,28:1|55,26:2:90|30,27:1"
+guard id=corre at=85,27 route="85,27:2:180|58,27:1|58,29:2:270|85,29:1"
+guard id=lab at=36,17 route="36,17:3|42,12:2|36,22:2|28,18:3:180"
+guard id=server at=50,22 route="50,22:2|50,11:2|45,21:0|47,17:2"
+guard id=office at=60,21 facing=0 look="0,90,270"
+guard id=barracks at=45,35 type=elite weapon=rifle route="45,35:4|45,38:1|49,35:3|41,35:2"
+guard id=wareh at=30,45 route="30,45:2|37,51:1|44,51:2|47,44:1|37,42:2"
+guard id=gen at=58,37 route="58,37:2|62,43:2|53,43:1|58,32:2"
+guard id=contain at=72,34 type=elite weapon=smg route="72,34:3|84,34:3|84,33:1|70,33:2"
+guard id=secroom at=29,33 facing=90 look="90,270"
+civilian id=sci1 at=31,13 type=scientist route="31,13:8:90:Running_tests|38,18:6|32,21:5"
+civilian id=sci2 at=40,14 type=scientist route="40,14:7|47,21:6::Checking_servers|40,20:4"
+civilian id=sci3 at=78,11 type=scientist route="78,11:9::Coffee_break|79,19:6|71,27:1|78,11:0"
+civilian id=tech at=72,40 type=scientist route="72,40:8|84,40:6|77,34:5"
+pickup item=keycard_blue at=4,14
+pickup item=medkit at=78,23
+pickup item=ammo amount=30 at=48,35
+pickup item=cash amount=400 at=70,6
+pickup item=armor amount=50 at=36,39
+pickup item=weapon_smg at=42,34
+
+@mission facility_voss
+target id=voss name="Dr. Helena Voss" at=36,13 escape=90,28 route="36,13:12:90:Examining_samples|48,21:8::Reviewing_data|65,9:12::Meeting_the_director|79,11:8::Coffee_break|62,21:4|36,20:10::Lab_work"
+guard id=vossguard at=37,12 type=elite weapon=smg follow=voss
+pickup item=intel id=samples name="Pathogen Samples" at=43,11
+
+@mission facility_prototype
+target id=kovac name="Chief Anton Kovac" at=30,34 weapon=smg hp=160 key=red escape=7,27 route="30,34:10:90:Watching_monitors|45,34:6::Inspecting_barracks|59,28:2|77,34:8::Checking_containment|31,28:2"
+target id=director name="Director Lin Hale" at=64,9 escape=90,28 route="64,9:14:270:Paperwork|60,14:8::Phone_call|64,21:5|80,11:7::Coffee|64,9:4"
+pickup item=keycard_red at=71,4
+pickup item=intel id=prototype name="Helix Prototype" at=77,42
+guard id=dirguard at=65,14 type=elite weapon=rifle follow=director
